@@ -4,6 +4,7 @@
 
 import pygame
 import sys
+from time import sleep
 
 # Initialize Pygame
 pygame.init()
@@ -22,7 +23,9 @@ background_images = {
     "Background": pygame.image.load("Background.png").convert(),
     "House": pygame.image.load("House.png").convert(),
     "Cave": pygame.image.load("Cave.png").convert(),
-    "Sleep": pygame.image.load("SleepyEnding.png").convert()
+    "Sleep": pygame.image.load("SleepyEnding.png").convert(),
+    "Beast": pygame.image.load("Mr.BeastEnding.png").convert(),
+    "Dark Cave": pygame.image.load("CaveDark.png").convert(),
 }
 
 # Player properties
@@ -51,6 +54,16 @@ while running:
                 current_map = "Background"
             elif current_map == "House" and 118 <= player_rect.x <= 443 and 198 <= player_rect.y <= 448:
                 current_map = "Sleep"
+            elif current_map == "Background" and 60 <= player_rect.x <= 390 and 0 <= player_rect.y <= 150:
+                current_map = "Cave"
+            elif current_map == "Cave" and 60 <= player_rect.x <= 390 and 0 <= player_rect.y <= 150:
+                current_map = "Background"
+            elif current_map == "Cave" and 0 <= player_rect.x <= 260 and 500 <= player_rect.y <= 626:
+                current_map = "Dark Cave"
+            elif current_map == "Dark Cave" and 0 <= player_rect.x <= 260 and 500 <= player_rect.y <= 626:
+                current_map = "Cave"
+            elif current_map == "Dark Cave" and 910 <= player_rect.x <= 1000 and 0 <= player_rect.y <= 100:
+                current_map = "Beast"
                 pass
 
     # Get the state of all keyboard buttons
